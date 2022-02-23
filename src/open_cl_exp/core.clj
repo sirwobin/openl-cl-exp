@@ -25,9 +25,9 @@
                                   (build-program! $))
                  my-kernel  (kernel my-program "put_long_into_buf")]
     (let [result (long-array 2)]
-      (set-args! my-kernel x my-buffer)
-      ;(set-arg! my-kernel 0 x)  ; causes error CL_INVALID_ARG_VALUE
-      ;(set-arg! my-kernel 1 my-buffer)
+      (set-arg! my-kernel 0 x)  ; causes error CL_INVALID_ARG_VALUE
+      (set-arg! my-kernel 1 my-buffer)
+      ; also tried (set-args! my-kernel x my-buffer) which throws the same error.
       (enq-kernel! cqueue my-kernel (work-size [1]))
       (enq-read! cqueue my-buffer result)
       (vec result))))
