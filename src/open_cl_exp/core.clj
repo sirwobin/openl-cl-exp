@@ -14,7 +14,7 @@
   (when (-> x type (not= Long))
     (throw (ex-info "x is not a long." {:value x})))
 
-  (with-release [dev        (-> (platforms) decent-platform devices first) ; (first (devices (decent-platform (platforms))))
+  (with-release [dev        (-> (platforms) decent-platform devices first)
                  ctx        (context [dev])
                  cqueue     (command-queue ctx dev)
                  my-buffer  (cl-buffer ctx 16 :read-write)
