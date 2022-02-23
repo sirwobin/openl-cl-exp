@@ -9,7 +9,7 @@
              [toolbox :refer [decent-platform]]]))
 
 (defn read-write-long-via-gpu
-  "I don't do a whole lot."
+  "Run a function on the first available GPU setting a long param and expecting to read it back."
   [x]
   (when (-> x type (not= Long))
     (throw (ex-info "x is not a long." {:value x})))
